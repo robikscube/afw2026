@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
-  
   <head>
     <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
   </head>
+  <body>
+    <a-scene light="defaultLightsEnabled: false">
+      <a-assets>
+        <img id="basketball-texture" src="Assets/Basketball.jpg">
+        <img id="obama-texture" src="Assets/obama-prism/obama-prism.png">
+      </a-assets>
 
-    <body>
-      <a-scene light="defaultLightsEnabled: false">
-            <a-assets>
-                  <!-- Preload textures and 3D models -->
-                  <img id="basketball-texture" src="Assets/Basketball.jpg">
-                  <a-asset-item id="obama-prism" src="Assets/obama_prism.gltf"></a-asset-item>
-              </a-assets>
-          
-                  <a-entity gltf-model="#obama-prism" position="-1.5 1.25 -5" scale="1 1 1"></a-entity>
-              
-                  <a-box position="-3 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-                  
-                  <!-- Shifted to the right -->
-                  <a-sphere src="#basketball-texture" position="1.5 1.25 -5" radius="1.25"></a-sphere>
-                  
-                  <a-cylinder position="3 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-                  <a-plane position="0 0 -4" rotation="-90 0 0" width="8" height="4" color="#681F8F"></a-plane>
-                  <a-sky color="#cc7c7c"></a-sky>
+      <a-entity position="-1.5 1.25 -5" scale="1 1 1">
 
-            <a-light type="ambient" color="#888888"></a-light>
+        <a-plane position="0 0 0" rotation="-90 0 0" width="2" height="2" material="src: #obama-texture; side: double;"></a-plane>
+        
+        <!-- 4 Triangular Faces forming the Pyramid -->
+        <!-- Front Face -->
+        <a-triangle vertex-a="0 1.5 0" vertex-b="-1 0 1" vertex-c="1 0 1" material="src: #obama-texture; side: double;"></a-triangle>
+        <!-- Back Face -->
+        <a-triangle vertex-a="0 1.5 0" vertex-b="1 0 -1" vertex-c="-1 0 -1" material="src: #obama-texture; side: double;"></a-triangle>
+        <!-- Left Face -->
+        <a-triangle vertex-a="0 1.5 0" vertex-b="-1 0 -1" vertex-c="-1 0 1" material="src: #obama-texture; side: double;"></a-triangle>
+        <!-- Right Face -->
+        <a-triangle vertex-a="0 1.5 0" vertex-b="1 0 1" vertex-c="1 0 -1" material="src: #obama-texture; side: double;"></a-triangle>
+      </a-entity>
 
-                <a-light type="directional" position="0 0 0" rotation="-90 0 0" target="#directionaltarget" light="castShadow: true;">
-                <a-entity id="directionaltarget" position="1 0 -1"></a-entity>
-            </a-light>
-      </a-scene>
+      <a-box position="-3 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      
+      <a-sphere src="#basketball-texture" position="1.5 1.25 -5" radius="1.25"></a-sphere>
+      
+      <a-cylinder position="3 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="8" height="4" color="#681F8F"></a-plane>
+      <a-sky color="#cc7c7c"></a-sky>
 
-      This is a website
-    </body>
-
-
+      <a-light type="ambient" color="#888888"></a-light>
+      <a-light type="directional" position="0 0 0" rotation="-90 0 0" target="#directionaltarget" light="castShadow: true;">
+        <a-entity id="directionaltarget" position="1 0 -1"></a-entity>
+      </a-light>
+    </a-scene>
+  </body>
 </html>
